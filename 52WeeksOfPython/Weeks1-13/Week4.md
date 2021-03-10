@@ -19,3 +19,8 @@ Review
   * devices
     * create an empty list to hold devices
     * create a dictionary for each device, append it to the devices list
+  * nx-api
+  * nodejs
+  * flask
+  * CamelCase
+  * snake_case
