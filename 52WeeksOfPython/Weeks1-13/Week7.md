@@ -11,3 +11,8 @@ Review
 * enumerate()
   * index and item you are looking for
 * find()
+* [1:]
+* splitlines()
+* string slicing
+  * [10:25]
+  * [38:52]
