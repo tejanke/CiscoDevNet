@@ -1,0 +1,9 @@
+internet-rtr01, ios, 10.10.20.181, cisco, cisco
+edge-firewall, asa, 10.10.20.171, cisco, cisco
+edge-sw01, ios, 10.10.20.172, cisco, cisco
+core-rtr01, iosxr, 10.10.20.173, cisco, cisco
+core-rtr02, iosxr, 10.10.20.174, cisco, cisco
+dist-rtr01, ios, 10.10.20.175, cisco, cisco
+dist-rtr02, ios, 10.10.20.176, cisco, cisco
+dist-sw01, nxos, 10.10.20.177, cisco, cisco
+dist-sw02, nxos, 10.10.20.178, cisco, cisco
