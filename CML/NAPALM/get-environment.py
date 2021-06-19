@@ -28,20 +28,30 @@ def get_inventory(inventory_file):
 
 def get_environment(device_number, device):
     """Grab environment variables"""
-    print("Opening a connection to {} at {}.".format(device['hostname'], \
-        device['ip']))
+    print("Checking {}.".format(device['hostname']))
     driver = napalm.get_network_driver(device['driver'])
-    if device['driver'] != 'asa':
-        with driver(hostname = device['ip'], username = device['username'], \
-            password = device['password'], optional_args = \
-            {'secret' : 'cisco'}) as conn:
-                device_environment = conn.get_environment()
-    else:
-        print("\tget_environment not supported")
+    if device['driver'] == 'asa':
+        print("ASA does not support get_environment.")
         device_environment = {}
+    elif device['hostname'] == 'edge-sw01':
+        print("NAPALM requires a username to login.")
+        device_environment = {}
+    elif device['driver'] == 'iosxr':
+        print("iosxr not supported.")
+        device_environment = {}
+    elif device['driver'] == 'nxos':
+        print("nxos not supported.")
+        device_environment = {}
+    else:
+        with driver(hostname=device['ip'], username=device['username'], \
+            password=device['password'], optional_args= \
+            {'secret': 'cisco'}) as conn:
+                print("Connecting to {}.".format(device['ip']))
+                device_environment = conn.get_environment()
     return device_environment
 
 main_inventory = get_inventory(inventory_file)
 for device_number, device in main_inventory.items():
     device_environment = get_environment(device_number, device)
-    print(yaml.dump(device_environment))
+    if bool(device_environment):
+        print(yaml.dump(device_environment))
