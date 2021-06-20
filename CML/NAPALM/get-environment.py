@@ -6,6 +6,7 @@ import sys
 import os
 import pprint
 import yaml
+import pandas
 
 inventory_file = "inventory.txt"
 
@@ -55,3 +56,4 @@ for device_number, device in main_inventory.items():
     device_environment = get_environment(device_number, device)
     if bool(device_environment):
         print(yaml.dump(device_environment))
+        print(device_environment)
